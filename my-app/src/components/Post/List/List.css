@@ -1,0 +1,24 @@
+.list-post-container {
+    margin: 10px;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.card-header,.card-footer .wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-footer img {
+    width: 25px;
+    height: 25px;
+}
+
+.img-container {
+    width: 100%;
+}
