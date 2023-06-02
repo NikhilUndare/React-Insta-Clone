@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useContext} from "react";
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from "../../../images/circle_icon.svg"
@@ -12,55 +12,64 @@ import Button from 'react-bootstrap/Button';
 
 import Header from "../Header/Header";
 import './List.css';
-
+import { PostList } from "../../../contexts/PostContext";
 
 
 export default function AllPost() {
 
+    const {posts} = useContext(PostList);
     return (
         <>
             <Header />
 
             <div className="list-post-container">
-                <div className="row m-3">
+            { posts.length === 0 ? <h3>No post available...</h3> : 
+        posts.map(post => { 
+
+return <>
+                <div className="row m-3" key={post.id}>
                     <div className="col-12">
                         <Card className="post-card">
                             <Card.Header className="card-header">
                                 <div col-5>
-                                    <h4>Siva</h4>
-                                    <label>Benguluru</label>
+                                    <h4>{post.name}</h4>
+                                    <label>{post.location}</label>
                                 </div>
                                 <div col-5>
-                                    <span className="dot">&#9679;&#9679;&#9679;</span>
-
+                                    <span className='dot'>&#9679;&#9679;&#9679;</span>
                                 </div>
                             </Card.Header>
-                            <Card.Body className="img-container">
-
-                                <img src="https://plus.unsplash.com/premium_photo-1673970474453-7c49815647ee?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" />
-
+                            <Card.Body className="card-body">
+                                <img src={`https://instaclone-nodejs-nikhil.onrender.com/${post.image}`} alt="" />
                             </Card.Body>
                             <Card.Footer className="card-footer">
                                 <div className="wrapper">
                                     <div className="col-5">
-                                        <img src={Heart} alt="Heart icon" />
-                                        <img src={Rocket} alt="Share icon" />
-                                        <p>64 likes</p>
+                                        <img src={Heart} alt="heart_icon" />
+                                        <img src={Rocket} alt="heart_icon" />
+                                        <p> {post.likes}</p>
                                     </div>
                                     <div className="col-5">
-                                        <span>30 mar 2023</span>
+                                        <span className='date'>{post.date}</span>
                                     </div>
                                 </div>
-                                <div >
-                                    <h3>Hello Form drax</h3>
+                                <div col-12 d-block>
+                                    <h5> {post.description}</h5>
                                 </div>
                             </Card.Footer>
                         </Card>
+
+
                     </div>
                 </div>
 
+                </>
+  })}
+
             </div>
 
+
         </>
+
     )
 }

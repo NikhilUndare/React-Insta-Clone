@@ -1,24 +1,33 @@
 .list-post-container {
-    margin: 10px;
+    margin:10px;
     flex-wrap: nowrap;
     flex-direction: column;
     display: flex !important;
     align-items: center;
     justify-content: center;
 }
+.post-card{
+    min-width: 300px
+}
+.dot {
+    font-size: 10px;
+}
 
-
-.card-header,.card-footer .wrapper{
+.card-header, .card-footer .wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+.card-body {
+    max-width: 300px;
+}
+.card-body img {
+    height: 50%;
+    width: 95%;
+}
 
 .card-footer img {
-    width: 25px;
-    height: 25px;
-}
-
-.img-container {
-    width: 100%;
-}
+    width: 20px;
+    height: 20px;
+} 
+.date {font-size: 12px;}
